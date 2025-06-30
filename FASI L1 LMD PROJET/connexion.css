@@ -1,0 +1,108 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: arial, sans-serif;
+}
+body{
+    font-family: "poppins" serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #111;
+    background-size: cover;
+    background-position: center;
+
+}
+a{
+    color: #d69618;
+    text-decoration: none;
+}
+a:hover{
+    text-decoration: underline;
+}
+form{
+    background-color: transparent;
+    backdrop-filter: blur(25px);
+    display: flex;
+    flex-direction: column;
+    width: 420px;
+    padding: 50px;
+    border-radius: 15px;
+    
+}
+h1{
+    text-align: center;
+    margin-bottom: 20px;
+    color: #fbf7f7;
+    font-size: 30px;
+}
+.input ,button{
+    margin-bottom: 20px;
+    padding: 10px;
+    border-radius: 30px;
+    border: 2px solid;
+    outline: none;
+    background-color: transparent;
+    color: #d69618;
+}
+.input::placeholder{
+    color: #d69618;
+}
+button{
+    background-color: #101010;
+    color: #d69618;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0,3s;
+}
+button:hover{
+    background-color: #ddd;
+}
+.beverly{
+    display: flex;
+    justify-content: space-between;
+    font-size: 14px;
+    color: #f8f6f6;
+    margin-bottom: 20px;
+}
+.bv{
+    display: flex;
+    align-items: center;
+}
+.bv input{
+    margin-right: 5px;
+}
+p{
+    text-align: center;
+    font-size: 14px;
+    color: #f9f6f6;
+}
+header.p{
+    cursor: pointer;
+    transition: 0.5s;
+    background-color: #d69618;
+    border: 2px;
+}
+ .btn-home {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  background-color: #ff9900;
+  color: #111;
+  padding: 10px 18px;
+  border-radius: 25px;
+  font-weight: bold;
+  text-decoration: none;
+  font-size: 0.95em;
+  box-shadow: 0 0 10px rgba(255, 153, 0, 0.4);
+  transition: background 0.3s ease, transform 0.2s ease;
+  z-index: 1000;
+}
+
+.btn-home:hover {
+  background-color: #e68200;
+  transform: scale(1.05);
+}

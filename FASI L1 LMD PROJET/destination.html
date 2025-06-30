@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="destination.css">
+    <link rel="stylesheet" href="index.js">
+</head>
+<body>
+    
+    
+     <section class="destinations">
+  <div class="container">
+    <a href="index.html" class="btn-home" title="Revenir à l’accueil">🏠</a>
+    <h2>Destinations Populaires</h2>
+    <section>
+         <div class="filters">
+  <button class="filter-btn active" data-continent="all">Tous</button>
+  <button class="filter-btn" data-continent="europe">Europe</button>
+  <button class="filter-btn" data-continent="asie">Asie</button>
+  <button class="filter-btn" data-continent="amerique">Amérique</button>
+  <button class="filter-btn" data-continent="afrique">Afrique</button>
+  <button class="filter-btn" data-continent="oceanie">Océanie</button>
+</div>
+    </section>
+
+    <input type="text" id="searchInput" placeholder="Rechercher une destination..." class="search-box">
+    
+    
+
+    <div id="destination-grid" class="destination-grid">
+      <!-- Les cartes seront générées ici -->
+    </div>
+  </div>
+</section>
+ <script>
+  const destinations = [
+    { nom: "Paris, France", image: "https://source.unsplash.com/300x200/?paris", continent: "europe" },
+    { nom: "Tokyo, Japon", image: "https://source.unsplash.com/300x200/?tokyo", continent: "asie" },
+    { nom: "New York, USA", image: "https://source.unsplash.com/300x200/?newyork", continent: "amerique" },
+    { nom: "Le Caire, Égypte", image: "https://source.unsplash.com/300x200/?egypt", continent: "afrique" },
+    { nom: "Rio, Brésil", image: "https://source.unsplash.com/300x200/?rio", continent: "amerique" },
+    { nom: "Rome, Italie", image: "https://source.unsplash.com/300x200/?rome", continent: "europe" },
+    { nom: "Bangkok, Thaïlande", image: "https://source.unsplash.com/300x200/?bangkok", continent: "asie" },
+    { nom: "Londres, Royaume-Uni", image: "https://source.unsplash.com/300x200/?london", continent: "europe" },
+    { nom: "Istanbul, Turquie", image: "https://source.unsplash.com/300x200/?istanbul", continent: "asie" },
+    { nom: "Marrakech, Maroc", image: "https://source.unsplash.com/300x200/?marrakech", continent: "afrique" },
+    { nom: "Sydney, Australie", image: "https://source.unsplash.com/300x200/?sydney", continent: "oceanie" },
+    { nom: "Toronto, Canada", image: "https://source.unsplash.com/300x200/?toronto", continent: "amerique" }
+    
+    
+  ];
+
+  const grid = document.getElementById("destination-grid");
+  const searchInput = document.getElementById("searchInput");
+  const buttons = document.querySelectorAll(".filter-btn");
+
+  function afficherDestinations(liste) {
+    grid.innerHTML = "";
+    if (liste.length === 0) {
+      grid.innerHTML = "<p style='color: #ff9900;'>Aucune destination trouvée.</p>";
+    } else {
+      liste.forEach(dest => {
+        grid.innerHTML += `
+          <div class="destination-card">
+            <img src="${dest.image}" alt="${dest.nom}">
+            <div class="card-content">
+              <h3>${dest.nom}</h3>
+              <a href="#" class="btn">Découvrir</a>
+            </div>
+          </div>
+        `;
+      });
+    }
+  }
+
+  // Affichage initial
+  let currentContinent = "all";
+  afficherDestinations(destinations);
+
+  // Filtrage par texte
+  searchInput.addEventListener("input", () => {
+    const valeur = searchInput.value.toLowerCase();
+    const resultats = destinations.filter(d =>
+      d.nom.toLowerCase().includes(valeur) &&
+      (currentContinent === "all" || d.continent === currentContinent)
+    );
+    afficherDestinations(resultats);
+  });
+
+  // Filtrage par continent
+  buttons.forEach(btn => {
+    btn.addEventListener("click", () => {
+      buttons.forEach(b => b.classList.remove("active"));
+      btn.classList.add("active");
+      currentContinent = btn.dataset.continent;
+      const valeur = searchInput.value.toLowerCase();
+      const resultats = destinations.filter(d =>
+        d.nom.toLowerCase().includes(valeur) &&
+        (currentContinent === "all" || d.continent === currentContinent)
+      );
+      afficherDestinations(resultats);
+    });
+  });
+</script>
+
+</body>
+</html>
